@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs",
+        // Other compiler options...
+      },
+      "include": ["/**/*.ts", "../fastify-session/src/typings/*.ts"],
+      "exclude": ["node_modules"]
+}
+  
