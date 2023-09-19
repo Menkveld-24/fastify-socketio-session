@@ -1,10 +1,11 @@
 {
     "compilerOptions": {
-        "target": "ES6",
-        "module": "commonjs",
-        // Other compiler options...
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "exactOptionalPropertyTypes": false,
+        "baseUrl": ".",
       },
-      "include": ["/**/*.ts", "../fastify-session/src/typings/*.ts"],
-      "exclude": ["node_modules"]
+      "include": ["/**/*.ts"],
+      "exclude": ["node_modules", "dist"]
 }
   
