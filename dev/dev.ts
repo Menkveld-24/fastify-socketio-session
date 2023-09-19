@@ -4,7 +4,7 @@ import fastifySession from '@mgcrea/fastify-session';
 import Redis from 'ioredis';
 import fastifyCookie from '@fastify/cookie';
 import fastifySocket from 'fastify-socket.io';
-import fastifySocketSession from '../src';
+import fastifySocketSession, { sessionRefreshMiddleware } from '../src';
 
 const SESSION_TTL = 3600; // 1 day in seconds
 
@@ -55,6 +55,7 @@ fastify.ready((err) => {
         // each pong will increment the session value with 1 and save it
         socket.on('pong', async () => {
             console.log('pong');
+            socket.use(sessionRefreshMiddleware(socket));
 
             const incr = socket.request.session.get('incremental') ?? 1;
             socket.request.session.set('incremental', parseInt(incr as string) + 1);
