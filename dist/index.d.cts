@@ -1,8 +1,8 @@
-import * as node_http from 'node:http';
 import * as fastify from 'fastify';
 import { Socket } from 'socket.io';
+import { IncomingMessage, ServerResponse } from 'http';
 
-declare const _default: (fastify: fastify.FastifyInstance<fastify.RawServerDefault, node_http.IncomingMessage, node_http.ServerResponse<node_http.IncomingMessage>, fastify.FastifyBaseLogger, fastify.FastifyTypeProviderDefault>, opts: Record<never, never>) => Promise<void>;
+declare const _default: (fastify: fastify.FastifyInstance<fastify.RawServerDefault, IncomingMessage, ServerResponse<IncomingMessage>, fastify.FastifyBaseLogger, fastify.FastifyTypeProviderDefault>, opts: Record<never, never>) => Promise<void>;
 
 /**
  * Socket.IO middleware to refresh the session upon each request.
