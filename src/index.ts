@@ -31,10 +31,14 @@ export default fastifyPlugin(
                                     options: CookieSerializeOptions;
                                 } = undefined
                             ) => {
-                                if (cookie === undefined) return;
+                                if (cookie === undefined) {
+                                    next();
+                                    return;
+                                }
 
                                 // @ts-expect-error Incompatible cookie options
                                 res.setHeader('Set-Cookie', serialize(cookie.name, cookie.value, cookie.options));
+                                next();
                             }
                         )
                         .catch(next);

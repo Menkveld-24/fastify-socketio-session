@@ -181,9 +181,12 @@ var src_default = fastifyPlugin(
       fastify.loadSession(req, req.headers.cookie).then(() => {
         fastify.encodeSession(req).then(
           (cookie = void 0) => {
-            if (cookie === void 0)
+            if (cookie === void 0) {
+              next();
               return;
+            }
             res.setHeader("Set-Cookie", (0, import_cookie.serialize)(cookie.name, cookie.value, cookie.options));
+            next();
           }
         ).catch(next);
       }).catch(next);
